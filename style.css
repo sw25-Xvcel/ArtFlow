@@ -668,3 +668,18 @@ input:focus {
     z-index: 9999;
     animation: slideIn 0.5s forwards;
 }
+/* Гар утсанд зориулсан тохиргоо (768px-ээс бага дэлгэц) */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Цэсийг нуух эсвэл "Hamburger menu" болгох */
+    }
+    
+    .grid, .shop-grid, .gallery-grid {
+        grid-template-columns: 1fr; /* 3-4 багана байсныг 1 багана болгоно */
+    }
+    
+    .container {
+        width: 95%; /* Хажуу талын зайг багасгах */
+        padding: 10px;
+    }
+}
