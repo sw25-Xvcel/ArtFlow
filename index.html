@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <title>ArtFlow | Home</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Нэвтэрсэн эсэхийг sessionStorage-оос шалгах
+        if (!sessionStorage.getItem("isLoggedIn")) {
+            window.location.href = "login.html";
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="logo">ART-FLOW</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="shop.html">Shop</a></li>
+        </ul>
+        <button onclick="logout()" class="auth-btn" style="background: #ff4b2b;">Гарах</button>
+    </nav>
+
+    <div class="container">
+        <h1>Тавтай морил, <span id="userDisplay"></span>!</h1>
+        <p>Уран зургийн ертөнцөөр аялахад бэлэн үү?</p>
+    </div>
+
+    <script>
+        // Нэвтэрсэн хэрэглэгчийн нэрийг харуулах
+        document.getElementById("userDisplay").innerText = sessionStorage.getItem("currentUser");
+
+        function logout() {
+            sessionStorage.clear(); // Нэвтэрсэн төлөвийг устгах
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <title>Gallery | ArtFlow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">ART-FLOW</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="artists.html">Artists</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href="virtual.html">Virtual</a></li>
+            <li><a href="exhibit.html">Exhibits</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        
+    </nav>
+  <div class="container">
+    <h1 class="page-title">Art Insights</h1>
+    <div class="blog-grid">
+        <!-- Блог 1 -->
+        <div class="card blog-card" onclick="toggleBlog(this)">
+            <div class="blog-header">
+                <div class="blog-tag">Philosophy</div>
+                <h3>Яагаад урлаг чухал вэ?</h3>
+            </div>
+            <div class="blog-content">
+                <p>Урлаг бол хүний сэтгэл хөдлөл, үзэл бодлоо хэлээр илэрхийлэх боломжгүй тэр орон зайг нөхдөг хэл юм. Энэ нь биднийг ертөнцийг өөр өнцгөөс харж, бусдыг ойлгох энэрэнгүй сэтгэлийг хөгжүүлдэг. Мөн түүхэн цаг хугацааны үнэт өвийг хадгалж, ирээдүй хойч үедээ соёлын дархлааг дамжуулан өгдөг ач холбогдолтой.</p>
+            </div>
+            <div class="expand-icon">+</div>
+        </div>
+
+        <!-- Блог 2 -->
+        <div class="card blog-card" onclick="toggleBlog(this)">
+            <div class="blog-header">
+                <div class="blog-tag">Economy</div>
+                <h3>Зургийн үнэ цэнэ юунаас хамаардаг вэ?</h3>
+            </div>
+            <div class="blog-content">
+                <p>Уран зургийн үнэ цэнэ нь зөвхөн ашигласан материал, хөдөлмөрөөс гадна тухайн зураачийн нэр хүнд, бүтээлийн ховор чанар болон түүхэн ач холбогдлоос шууд хамаардаг. Зураачийн гарын үсэг, бүтээлийн гарвал түүх (provenance) нь цуглуулагчдын хувьд хамгийн чухал үзүүлэлт болдог. Мөн дуудлага худалдааны зах зээл дээрх эрэлт хэрэгцээ нь үнийг хэдэн сая долларт хүргэх үндэс болно.</p>
+            </div>
+            <div class="expand-icon">+</div>
+        </div>
+    </div>
+</div>
+<script>
+    function toggleBlog(card) {
+    // Бусад нээлттэй байгаа картуудыг хаах (заавал биш)
+    document.querySelectorAll('.blog-card').forEach(c => {
+        if (c !== card) c.classList.remove('active');
+    });
+
+    // Одоо дарагдсан картыг нээх эсвэл хаах
+    card.classList.toggle('active');
+}
+</script>
+</body>
+</html>

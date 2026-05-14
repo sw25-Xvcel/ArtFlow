@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <title>Gallery | ArtFlow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">ART-FLOW</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="artists.html">Artists</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href="virtual.html">Virtual</a></li>
+            <li><a href="exhibit.html">Exhibits</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        
+    </nav>
+    <div class="container">
+    <h1 class="page-title">Artistic Timeline</h1>
+    
+    <div class="timeline">
+        <!-- Эртний үе -->
+        <div class="card history-card" onclick="openHistory('ancient')">
+            <div class="time-stamp">МЭӨ 30,000</div>
+            <div class="history-content">
+                <h3>Эртний үе</h3>
+                <p>Агуйн сүг зургаас эхэлсэн хүн төрөлхтний анхны дүрслэх урлаг.</p>
+                <span class="read-more">Learn More +</span>
+            </div>
+        </div>
+
+        <!-- Дундад зуун -->
+        <div class="card history-card" onclick="openHistory('medieval')">
+            <div class="time-stamp">5-р зуун</div>
+            <div class="history-content">
+                <h3>Дундад зуун</h3>
+                <p>Сүм хийд, шашны зан үйл болон Готик хэв маягийн цэцэглэлт.</p>
+                <span class="read-more">Learn More +</span>
+            </div>
+        </div>
+
+        <!-- Сэргэн мандалт -->
+        <div class="card history-card" onclick="openHistory('renaissance')">
+            <div class="time-stamp">14-р зуун</div>
+            <div class="history-content">
+                <h3>Сэргэн мандалт</h3>
+                <p>Хүмүүнлэг үзэл, бодит дүрслэл болон суут ухаантнуудын эрин үе.</p>
+                <span class="read-more">Learn More +</span>
+            </div>
+        </div>
+
+        <!-- Орчин үе -->
+        <div class="card history-card" onclick="openHistory('modern')">
+            <div class="time-stamp">Өнөө үе</div>
+            <div class="history-content">
+                <h3>Орчин үе</h3>
+                <p>Дижитал урлаг, контемпорари болон хязгааргүй сэтгэмж.</p>
+                <span class="read-more">Learn More +</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- History Modal -->
+<div id="historyModal" class="modal">
+    <div class="modal-content glass">
+        <span class="close-btn" onclick="closeHistoryModal()">&times;</span>
+        <div id="historyModalBody">
+            <!-- JavaScript-ээр мэдээлэл орно -->
+        </div>
+    </div>
+</div>
+<script>
+    const historyData = {
+    ancient: {
+        title: "Эртний үе (Ancient Art)",
+        desc: "Хүн төрөлхтний урлагийн гараа агуйн хананаас эхэлсэн. Энэ үед ан агнуур, байгаль дэлхийг шүтэх үзэл давамгайлж байв.",
+        details: "Алдартай дурсгал: Ласко агуйн зургууд, Виллендорфын Венера.",
+        
+    },
+    medieval: {
+        title: "Дундад зуун (Medieval Art)",
+        desc: "Европт Христийн шашин хүчтэй дэлгэрснээр урлаг бүхэлдээ сүм хийдийн нөлөөнд орсон.",
+        details: "Онцлог: Византийн мозайк, Готик архитектур, Витраж (шилээр зурах).",
+        
+    },
+    renaissance: {
+        title: "Сэргэн мандалт (Renaissance)",
+        desc: "Урлаг болон шинжлэх ухааны алтан үе. Хүний биеийн анатоми, гэрэл сүүдэр, алслалтыг төгс дүрсэлж эхэлсэн.",
+        details: "Гол төлөөлөгч: Леонардо да Винчи, Микеланжело, Рафаэль.",
+       
+    },
+    modern: {
+        title: "Орчин үе (Modern & Contemporary)",
+        desc: "Уламжлалт дүрмийг эвдэж, сэтгэл хөдлөл болон концепцыг чухалчлах болсон.",
+        details: "Хөгжил: Поп-арт, Абстракт, Дижитал арт, AI generative art.",
+       
+    }
+};
+
+function openHistory(period) {
+    const data = historyData[period];
+    const modal = document.getElementById("historyModal");
+    const body = document.getElementById("historyModalBody");
+
+    body.innerHTML = `
+        <img src="${data.img}" style="width:100%; border-radius:20px; margin-bottom:20px;">
+        <h1 style="color:var(--primary); font-family:'Syncopate'">${data.title}</h1>
+        <p style="margin-top:20px; font-size:1.1rem; line-height:1.8;">${data.desc}</p>
+        <div style="margin-top:20px; padding:15px; background:rgba(255,255,255,0.05); border-radius:10px;">
+            <p><strong>Мэдүүштэй:</strong> ${data.details}</p>
+        </div>
+    `;
+
+    modal.style.display = "block";
+}
+
+function closeHistoryModal() {
+    document.getElementById("historyModal").style.display = "none";
+}
+</script>
+</body>
+</html>

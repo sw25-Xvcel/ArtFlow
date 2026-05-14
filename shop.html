@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <title>Gallery | ArtFlow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">ART-FLOW</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="artists.html">Artists</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href="virtual.html">Virtual</a></li>
+            <li><a href="exhibit.html">Exhibits</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        
+    </nav>
+   <div class="container">
+    <h1 class="page-title">Art Shop</h1>
+    <div class="shop-grid">
+        <!-- Бүтээгдэхүүн 1 -->
+        <div class="product-card card">
+            <div class="product-badge">Best Seller</div>
+            <div class="product-img">
+                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=500" alt="Starry Night">
+                <div class="product-overlay">
+                    <button class="view-btn">Quick View</button>
+                </div>
+            </div>
+            <div class="product-details">
+                <h3>The Starry Night (Replica)</h3>
+                <p class="product-type">Museum Quality Canvas</p>
+                <div class="price-row">
+                    <span class="price">500,000₮</span>
+                    <!-- addToCart функцыг дуудаж байна -->
+                    <button class="cart-btn" onclick="addToCart('The Starry Night')">
+                        <i class="fas fa-shopping-cart"></i> Сагсанд хийх
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Бүтээгдэхүүн 2 -->
+        <div class="product-card card">
+            <div class="product-badge">Digital</div>
+            <div class="product-img">
+                <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=500" alt="NFT Art">
+                <div class="product-overlay">
+                    <button class="view-btn">OpenSea-ээр үзэх</button>
+                </div>
+            </div>
+            <div class="product-details">
+                <h3>Abstract Flow #01</h3>
+                <p class="product-type">Digital Collectible (NFT)</p>
+                <div class="price-row">
+                    <span class="price">0.1 ETH</span>
+                    <button class="cart-btn buy-now" onclick="addToCart('Abstract Flow #01')">Худалдаж авах</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function addToCart(productName) {
+    // Өмнөх toast байгаа бол устгах
+    const oldToast = document.querySelector('.cart-toast');
+    if (oldToast) oldToast.remove();
+
+    const toast = document.createElement('div');
+    toast.className = 'cart-toast';
+    toast.innerHTML = `✅ <b>${productName}</b> сагсанд нэмэгдлээ!`;
+    
+    // Toast-ийн үндсэн загвар (style.css-д байхгүй бол энд нэмж болно)
+    Object.assign(toast.style, {
+        position: 'fixed',
+        bottom: '30px',
+        right: '30px',
+        backgroundColor: '#00f2fe',
+        color: '#000',
+        padding: '15px 25px',
+        borderRadius: '12px',
+        boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+        zIndex: '10000',
+        fontFamily: 'sans-serif',
+        animation: 'slideIn 0.5s ease-out'
+    });
+
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+        toast.style.animation = 'fadeOut 0.5s ease-in';
+        setTimeout(() => toast.remove(), 500);
+    }, 3000);
+}
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <title>Бүртгүүлэх | ArtFlow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form-box">
+        <h2>Бүртгүүлэх</h2>
+        <form id="regForm">
+            <input type="text" id="regName" placeholder="Нэр" required>
+            <input type="email" id="regEmail" placeholder="Имэйл" required>
+            <input type="password" id="regPass" placeholder="Нууц үг" required>
+            <button type="submit" class="auth-btn" style="width: 100%;">Бүртгүүлэх</button>
+        </form>
+        <p>Данстай бол <a href="login.html" style="color: var(--primary);">Нэвтрэх</a></p>
+    </div>
+
+    <script>
+        document.getElementById("regForm").onsubmit = function(e) {
+            e.preventDefault();
+            const name = document.getElementById("regName").value;
+            const email = document.getElementById("regEmail").value;
+            const pass = document.getElementById("regPass").value;
+
+            // localStorage-д объектыг мөр (string) болгож хадгалах
+            const userData = { name, email, pass };
+            localStorage.setItem(email, JSON.stringify(userData));
+            
+            alert("Амжилттай бүртгүүллээ!");
+            window.location.href = "login.html";
+        };
+    </script>
+</body>
+</html>

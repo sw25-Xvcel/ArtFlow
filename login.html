@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <title>Нэвтрэх | ArtFlow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-page">
+    <!-- Зургууд гүйж харагдах хэсэг -->
+    <div class="art-scroller">
+        <div class="track">
+            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=500" alt="Art">
+            <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=500" alt="Art">
+            <img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?q=80&w=500" alt="Art">
+            <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=500" alt="Art">
+            <!-- Зургуудыг давтаж тавьснаар тасралтгүй гүйх эффект үүснэ -->
+            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=500" alt="Art">
+            <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=500" alt="Art">
+            <img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?q=80&w=500" alt="Art">
+            <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=500" alt="Art">
+        </div>
+    </div>
+
+    <!-- Нэвтрэх форм -->
+    <div class="form-box">
+        <div class="badge">ArtFlow Member</div>
+        <h2>Урланд нэвтрэх</h2>
+        <form id="loginForm">
+            <input type="email" id="loginEmail" placeholder="Access ID (Email)" required>
+            <input type="password" id="loginPass" placeholder="Secret Key" required>
+            <button type="submit" class="auth-btn">Authorize</button>
+        </form>
+        <p>New Artist? <a href="register.html">Create Identity</a></p>
+    </div>
+</div>
+    <div class="form-box">
+        <h2>Нэвтрэх</h2>
+        <form id="loginForm">
+            <input type="email" id="loginEmail" placeholder="Имэйл" required>
+            <input type="password" id="loginPass" placeholder="Нууц үг" required>
+            <button type="submit" class="auth-btn" style="width: 100%;">Нэвтрэх</button>
+        </form>
+        <p>Шинэ хэрэглэгч үү? <a href="register.html" style="color: var(--primary);">Бүртгүүл</a></p>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").onsubmit = function(e) {
+            e.preventDefault();
+            const email = document.getElementById("loginEmail").value;
+            const pass = document.getElementById("loginPass").value;
+
+            // localStorage-оос хэрэглэгчийг хайх
+            const storedData = localStorage.getItem(email);
+            
+            if (storedData) {
+                const user = JSON.parse(storedData);
+                if (user.pass === pass) {
+                    // Нэвтрэлт амжилттай бол sessionStorage-д хадгалах
+                    sessionStorage.setItem("isLoggedIn", "true");
+                    sessionStorage.setItem("currentUser", user.name);
+                    window.location.href = "index.html";
+                } else {
+                    alert("Нууц үг буруу байна!");
+                }
+            } else {
+                alert("Хэрэглэгч олдсонгүй!");
+            }
+        };
+    </script>
+    
+</body>
+</html>

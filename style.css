@@ -1,0 +1,670 @@
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap');
+
+:root {
+    --primary: #00f2fe;
+    --secondary: #4facfe;
+    --accent: #f093fb;
+    --bg: #030005;
+    --glass: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.08);
+    --neon-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg);
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(79, 172, 254, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(240, 147, 251, 0.05) 0%, transparent 40%);
+    color: #e0e0e0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    animation: pageReveal 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes pageReveal {
+    from { opacity: 0; filter: blur(10px); transform: scale(1.02); }
+    to { opacity: 1; filter: blur(0); transform: scale(1); }
+}
+
+/* --- NAV BAR --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 8%;
+    background: rgba(3, 0, 5, 0.7);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-family: 'Syncopate', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 4px;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #999;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.4s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+    text-shadow: 0 0 15px var(--primary);
+}
+
+/* --- CARDS & GLASSMorphism --- */
+.container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    transition: 0.5s;
+}
+
+.card:hover {
+    transform: translateY(-15px) scale(1.02);
+    border-color: rgba(0, 242, 254, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), var(--neon-shadow);
+}
+
+.card:hover::before {
+    left: 100%;
+}
+
+/* --- AUTH BUTTONS --- */
+.auth-btn {
+    padding: 12px 32px;
+    background: transparent;
+    border: 1px solid var(--primary);
+    border-radius: 100px;
+    color: var(--primary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.4s all;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.auth-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 0%; height: 100%;
+    background: linear-gradient(45deg, var(--secondary), var(--primary));
+    transition: 0.4s;
+    z-index: -1;
+}
+
+.auth-btn:hover {
+    color: white;
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
+}
+
+.auth-btn:hover::before {
+    width: 100%;
+}
+
+/* --- FORMS --- */
+.form-box {
+    background: rgba(10, 10, 15, 0.8);
+    border: 1px solid var(--border);
+    padding: 50px;
+    border-radius: 30px;
+    backdrop-filter: blur(30px);
+    width: 100%;
+    max-width: 450px;
+    margin: 80px auto;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    padding: 16px;
+    border-radius: 12px;
+    color: white;
+    margin-bottom: 20px;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+}
+
+h1 {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    background: linear-gradient(to bottom, #fff, #666);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+/* Нэвтрэх хуудасны үндсэн тохиргоо */
+.login-page {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #000;
+}
+
+/* Зургийн урсгал - Infinite Scroll */
+.art-scroller {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.4; /* Зургуудыг бага зэрэг бүдгэрүүлж текстээ тодруулна */
+    filter: grayscale(30%) contrast(110%);
+}
+
+.art-scroller .track {
+    display: flex;
+    width: calc(500px * 8); /* Зургийн өргөн * тоо */
+    animation: scrollArt 40s linear infinite;
+}
+
+.art-scroller img {
+    width: 500px;
+    height: 100vh;
+    object-fit: cover;
+    padding: 10px;
+    filter: brightness(0.7);
+}
+
+@keyframes scrollArt {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-500px * 4)); }
+}
+
+/* Формыг зургийн дээр гаргах */
+.form-box {
+    position: relative;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(40px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+    padding: 60px 40px;
+}
+
+/* Гоёл чимэглэлийн жижиг текст */
+.badge {
+    display: inline-block;
+    padding: 5px 15px;
+    background: var(--primary);
+    color: #000;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* Input-ийг илүү "Cyber" болгох */
+input {
+    background: rgba(0, 0, 0, 0.5) !important;
+    border-left: 4px solid var(--primary) !important;
+    letter-spacing: 1px;
+}
+
+input:focus {
+    border-left: 4px solid var(--accent) !important;
+    transform: translateX(5px);
+}
+
+.auth-btn {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-top: 20px;
+}
+.gallery-grid {
+    column-count: 3;
+    column-gap: 20px;
+    padding: 20px;
+}
+
+.gallery-item {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: crosshair; /* Урлагийн мэдрэмж төрүүлэх курсор */
+}
+
+.gallery-item img {
+    width: 100%;
+    display: block;
+    transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.gallery-grid:hover .gallery-item:not(:hover) {
+    filter: blur(5px) grayscale(1);
+    opacity: 0.3;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+.artist-num {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 4rem;
+    opacity: 0.05;
+    position: absolute;
+    top: -10px;
+    right: 10px;
+}
+
+.accent-line {
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    margin-top: 15px;
+    transition: 0.6s;
+}
+
+.card:hover .accent-line {
+    width: 100%;
+}
+.product-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+}
+
+.product-card::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(45deg, transparent, var(--primary), transparent);
+    z-index: -1;
+    opacity: 0;
+    transition: 0.5s;
+    border-radius: 24px;
+}
+
+.product-card:hover::after {
+    opacity: 1;
+}
+
+.price-tag {
+    font-family: 'Syncopate', sans-serif;
+    color: var(--primary);
+    font-size: 1.2rem;
+    margin: 15px 0;
+}
+.virtual-container {
+    height: 70vh;
+    border: 2px solid var(--border);
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('gallery-bg.jpg') center/cover;
+    position: relative;
+    box-shadow: inset 0 0 100px #000;
+}
+
+.scan-line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--primary);
+    box-shadow: 0 0 15px var(--primary);
+    top: 0;
+    animation: scan 3s linear infinite;
+}
+
+@keyframes scan {
+    0% { top: 0; opacity: 0; }
+    50% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+/* Artist Images */
+.artist-img-container {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.artist-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.artist-card:hover img {
+    transform: scale(1.15) rotate(2deg);
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 0.4s;
+}
+
+.modal-content {
+    margin: 5% auto;
+    padding: 40px;
+    width: 80%;
+    max-width: 700px;
+    border-radius: 30px;
+    position: relative;
+    border: 1px solid var(--border);
+    animation: slideUp 0.5s ease-out;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px; right: 30px;
+    font-size: 40px;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+/* Timeline Structure */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto;
+    padding-left: 40px;
+    border-left: 2px solid var(--primary); /* Цаг хугацааны шугам */
+}
+
+.history-card {
+    position: relative;
+    margin-bottom: 30px;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 30px;
+    transition: 0.4s;
+}
+
+.history-card::before {
+    content: '';
+    position: absolute;
+    left: -51px;
+    top: 30px;
+    width: 20px;
+    height: 20px;
+    background: var(--bg);
+    border: 3px solid var(--primary);
+    border-radius: 50%;
+    z-index: 5;
+}
+
+.time-stamp {
+    font-family: 'Syncopate', sans-serif;
+    color: var(--primary);
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.history-card:hover {
+    transform: translateX(15px);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: -10px 0 20px rgba(0, 242, 254, 0.1);
+}
+.blog-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.blog-card {
+    position: relative;
+    padding: 30px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--border);
+}
+
+.blog-tag {
+    font-size: 10px;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.blog-content {
+    max-height: 0; /* Анх харагдахгүй */
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    margin-top: 0;
+}
+
+/* Идэвхтэй үед дэлгэгдэх */
+.blog-card.active {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--primary);
+}
+
+.blog-card.active .blog-content {
+    max-height: 500px; /* Тайлбарын уртад тааруулна */
+    opacity: 1;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.expand-icon {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 24px;
+    color: var(--primary);
+    transition: 0.4s;
+}
+
+.blog-card.active .expand-icon {
+    transform: rotate(45deg);
+    color: var(--accent);
+}
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.product-card {
+    padding: 0 !important; /* Доторх зайг зурагт зориулж тэглэх */
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border);
+}
+
+.product-img {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.product-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.product-card:hover .product-img img {
+    transform: scale(1.1);
+}
+
+.product-card:hover .product-overlay {
+    opacity: 1;
+}
+
+.product-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--primary);
+    color: #000;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: bold;
+    z-index: 10;
+    text-transform: uppercase;
+}
+
+.product-details {
+    padding: 20px;
+}
+
+.product-type {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    font-family: 'Syncopate', sans-serif;
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.cart-btn {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 13px;
+}
+
+.cart-btn:hover {
+    background: var(--primary);
+    color: #000;
+}
+
+.buy-now {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+.cart-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--primary);
+    color: black;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    z-index: 9999;
+    animation: slideIn 0.5s forwards;
+}
