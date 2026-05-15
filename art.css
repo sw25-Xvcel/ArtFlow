@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background: #0a0a0a; /* Гүн хар дэвсгэр */
+    font-family: 'Segoe UI', sans-serif;
+}
+
+#artCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ард нь байрлуулна */
+}
+
+.content {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05); /* Glassmorphism */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    width: fit-content;
+    pointer-events: none; /* Хулганы хөдөлгөөнийг canvas-д саадгүй дамжуулна */
+}
